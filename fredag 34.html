@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kapitel 1 Lektion 2</title>
+</head>
+<body>
+  <script src="http://koda.nu/simple.js">
+
+  // 1. Skapa variabler för första figuren
+  var x = 800;
+  var y = 300;
+  var storlek = 100;
+  var color = "red"
+
+  // Rita första figuren med variabler
+  //circle(x, y, storlek, color);
+
+  // 2. Skapa ett objekt för andra figuren (player)
+  var player = { x: 200, y: 400, size: 90, color: "green" };
+
+  // Rita andra figuren med objektets egenskaper
+  //circle(player.x, player.y, player.size, player.color);
+
+var spelare = {
+      // x: 780, 
+       //y: 300
+}
+
+//line(spelare.x, spelare.y + 100, spelare.x, spelare.y + 300, 10, "black");
+//ring(spelare.x, spelare.y + 50, 50, 10, "black");
+//rectangle(spelare.x - 75,spelare.y+ 150, 150, 10, "black");
+//line(spelare.x, spelare.y + 300, spelare.x - 75, spelare.y + 375, 10, "black")
+//line(spelare.x, spelare.y + 300, spelare.x + 75, spelare.y + 375, 10, "black")
+
+
+
+// skapa ett object för spelaren.
+var player = {
+  x: 780,
+  y: 300,
+  color: mixColor(random(255), random(255), random(255))
+}
+ring(player.x, player.y, 50, 10, player.color);
+// Ring är en funktion som ritar en ring på skärmen. 
+
+// skapa ett object för enemy.
+var enemy = {
+x:780,
+y:500,
+color: "red"
+}
+// rectangle är en funktion som ritar en rectangle på skärmen.
+rectangle(enemy.x, enemy.y, 100, 100, enemy.color); 
+// 
+
+  </script>
+</body>  
+</html> 
