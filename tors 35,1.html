@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maria Game — Kapitel 1</title>
+</head>
+<body>
+  <script src="http://koda.nu/simple.js">
+
+
+     var player ={
+        x: 250,
+        y: 340,
+        size:22,
+        color: "crimson" 
+     }
+     var poang = 0; 
+
+
+
+
+
+
+
+
+
+    // Marken
+    rectangle(0, 420, 800, 80, "green");
+
+    // Huset (hemmabasen)
+    rectangle(60, 260, 160, 160, "burlywood");
+    triangle(40, 260, 240, 260, 140, 150, "firebrick");
+    rectangle(110, 340, 50, 80, "saddlebrown");
+    circle(180, 300, 20, "skyblue");
+    line(180, 280, 180, 320, "white");
+    line(160, 300, 200, 300, "white");
+
+    // Grinden (målet, längst bort i trädgården)
+    rectangle(680, 300, 14, 120, "sienna");
+    rectangle(760, 300, 14, 120, "sienna");
+    rectangle(680, 290, 94, 14, "sienna");
+
+    // Solen
+    picture(600, 90, "https://tprealgy.github.io/resources/img/sun.png", 32, 32)
+
+    // Maria
+    circle(player.x, player.y, player.size, "peachpuff");         // huvud
+    circle(player.x, player.y - player.size, 8, "saddlebrown");        // hårknut
+    circle(player.x - 6, player.y - 4, 3, "black");              // öga vänster
+    circle(player.x + 6, player.y - 4, 3, "black");  // öga höger'
+
+
+    triangle(player.x - 20,
+             player.y + player.size + 50,
+             player.x + 20,
+             player.y + player.size + 50,
+             player.x,
+             player.y + player.size,
+             "crimson");
+             // klänning
+
+
+    line(player.x - 18, player.y + player.size + 18, player.x - 32, player.y + player.size + 38, "peachpuff");     // arm vänster
+
+    line(player.x + 18, player.y + player.size + 18, player.x + 32, player.y + player.size + 38, "peachpuff");     // arm höger
+
+    // Texter
+    text(40, 40, 30, "Maria Game", "black");
+    text(40, 75, 20, "Poäng: " + poang, "black");
+    text(686, 272, 14, "Grinden", "black");
+    text(40, 470, 16, "Marias trädgård", "white");
+
+  </script>
+</body>
+</html>

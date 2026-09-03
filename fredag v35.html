@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="http://koda.nu/simple.js">
+        // Här skriver jag kod
+    
+     rectangle(200, 200, 400, 250, "blue")  // flagga blå
+     line(400, 200, 400, 450, 40,  "yellow")   // flagga gul
+     line(200, 325, 600, 325, 40, "yellow")   // flagga gul
+
+
+     rectangle(200, 175, 10, 500, "black")  // flaggstång
+
+     circle(205, 185, 20, "goldenrod")  // flaggstång topp
+
+     text(220, 180, 40, "Sverige", "black")  // text
+
+    var color = "pink" 
+    var storlek = 10 
+
+
+    ring(800, 500, 100, storlek, color)
+    ring(800, 500, 90, storlek, "blue")
+
+
+    var face = { 
+       
+        x: random(100, 1000), 
+        y: random(700, 1000),
+        color: (mixColor(random(255),random(255), random(255))), 
+        mun: 50,
+        nathan: 30
+    }
+
+           circle(face.x, face.y, 100, face.color)  // ansikte 
+           circle(face.x - 50, face.y - 20, 10, "black")  // öga vänster
+           circle(face.x + 50, face.y - 30, 10, "black")  // öga höger
+           rectangle(face.x - 40, face.y + 30, 80, 10, "black") 
+           rectangle(face.x -20, face.y + 10, 10, 20, "white") 
+           text(face.x - 100, face.y - 100, 50, "Nathan", "black")
+        
+         </script>
+</body>
+</html>

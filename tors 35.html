@@ -3,13 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Skyline</title>
 </head>
 <body>
     <script src="http://koda.nu/simple.js">
-        circle(random(800), random(600), random(100), mixColor(random(255), random(255), random(255)))
-        circle(random(800), random(600), random(100), mixColor(random(255), random(255), random(255)))
-        circle(random(800), random(600), random(100), mixColor(random(255), random(255), random(255))) 
+      rectangle(random(totalWidth), random(totalHeight), random(100), random(100), mixColor(random(255), random(255), random(255)))
+      rectangle(random(totalWidth), random(totalHeight), random(100), random(100), mixColor(random(255), random(255), random(255)))
+      rectangle(random(totalWidth), random(totalHeight), random(100), random(100), mixColor(random(255), random(255), random(255)))
+      text(100, 100, 50, random(1, 6), mixColor(random(255), random(255), random(255)))
+      var sun = {
+        x: random(totalWidth),
+        y: random(totalHeight),
+      }
+
+      circle(sun.x, sun.y, 300, "yellow")
     </script>
 </body>
 </html>
