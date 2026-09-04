@@ -13,22 +13,92 @@
         var player = { 
             x:800, 
             y: 500, 
-            size: 40, 
-            color: "blue",
-            speedX: 2,     // med -2 går den åt vänster,
-           speedY:  10 // med 0 går den rakt fram,   
+            size: 10, 
+            color: mixColor(random(255), random(255), random(255)),
+            speedX: 50,     // med -2 går den åt vänster,
+           speedY:  50,   // med 0 går den rakt fram,   
+           directionX: -1,     // med 1 går den åt höger, med -1 går den åt vänster
+           directionY: 1 // med 1 går den åt höger, med -1 går den åt vänster
         }
+
+
+        var enemy = {
+
+            X: 800,
+            Y: 500,
+            bredd: 50,
+            hojd: 50,
+            color: "red", 
+            speedX: 10,
+            speedY: 0,
+            directionX: 1,
+            directionY: 1
+
+
+
+
+        }
+
+
+
 
         function update() {
         clearScreen()
 
-        circle(player.x, player.y, player.size, player.color)
-        player.x = player.x + player.speedX
-         player.y = player.y + player.speedY 
 
+
+
+        // circle(player.x, player.y, player.size, player.color)
+        // player.x = player.x + player.speedX * player.directionX
+        //  player.y = player.y + player.speedY * player.directionY 
+        //  player.color = mixColor(random(255), random(255), random(255)) 
+        //  player.size++ 
+         
+
+         rectangle(enemy.X, enemy.Y, enemy.bredd, enemy.hojd, enemy.color)
+        // enemy.X = enemy.X + enemy.speedX * enemy.directionX
+
+
+        setTimeout(() => {
+
+            enemy.X = enemy.X + mouse.x / 100
+
+        }, 1000)
+
+
+        enemy.Y = enemy.Y + enemy.speedY * enemy.directionY 
+
+        if(enemy.X >= totalWidth) { enemy.X = 0; } 
+        if(enemy.Y >= totalHeight) { enemy.Y = 0;}
+        if(player.x < 0) {player.x = totalWidth;}
+        if(player.y < 0) {player.y = totalHeight;}
+         
+
+
+
+
+
+
+
+
+
+         console.log(player.x)
 
         if(player.x >= totalWidth) { player.x = 0; }
         if(player.y >= totalHeight) { player.y = 0; } 
+        if(player.x < 0) { player.x = totalWidth; }
+        if(player.y < 0) { player.y = totalHeight; }
+        if(player.size >=200) { player.size = 10; }
+
+
+
+
+
+//  circle(player.x, player.y, player.size, player.color)
+//         player.x = player.x + player.speedX * player.directionX
+//          player.y = player.y + player.speedY * player.directionY 
+
+
 
 
         }
