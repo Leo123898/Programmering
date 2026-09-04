@@ -52,21 +52,21 @@ var enemy = { x: 1000, y: 400, size: 40, color: "red", speed: 20}
      //if(spelare.x >= totalWidth) { spelare.x = 0; }
      //spelare.y = spelare.y + spelare.speed
 // circle(enemy.x, enemy.y, enemy.size, enemy.color)
-//      enemy.x = enemy.x - enemy.speed
-//      enemy.y = enemy.y + enemy.speed 
+    enemy.x = enemy.x - enemy.speed
+    enemy.y = enemy.y + enemy.speed 
 
      
-      //if(spelare.y >= totalHeight) { spelare.y = 0; }
+      if(spelare.y >= totalHeight) { spelare.y = 0; }
 
-    //  if(enemy.x <= 0) { enemy.x = totalWidth; }
-    //  if(enemy.y >= totalHeight) { enemy.y = 0; } 
+     if(enemy.x <= 0) { enemy.x = totalWidth; }
+     if(enemy.y >= totalHeight) { enemy.y = 0; } 
 
 
-//       rectangle(sky.x, sky.y, sky.totalWidth, sky.height, sky.color)
+       rectangle(sky.x, sky.y, sky.totalWidth, sky.height, sky.color)
 
-// rectangle(mark.x, mark.y, mark. totalWidth, mark.height, mark.color) 
+ rectangle(mark.x, mark.y, mark. totalWidth, mark.height, mark.color) 
 
-// }
+ }
 
 
 
