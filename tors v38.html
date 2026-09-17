@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="http://koda.nu/simple.js">
+        
+        var player = { x: 400, y: 300, size: 40, color: "blue", speed: 5 }; 
+
+        var x = 800;
+        var y = 200;
+        var storlek = 50
+
+
+
+
+
+
+
+        function update() {
+            clearScreen(); 
+            circle(player.x, player.y, player.size, player.color);
+            text( 50, 50, 40, "x är: " + player.x + " y är: " + player.y );
+            circle(x, y, storlek, "red");
+
+
+
+
+            if (keyboard.d) {
+                player.x = player.x + player.speed;
+            }
+            if ( keyboard.a) {
+                player.x = player.x - player.speed;
+            }
+       
+        if (keyboard.w) {
+                    player.y = player.y - player.speed;
+                }
+        if (keyboard.s) {
+                    player.y = player.y + player.speed;
+                }
+
+             if (player.x + player.size > totalWidth) { player.x = totalWidth - player.size; }
+             if (player.y + player.size > totalHeight) { player.y = totalHeight - player.size; }
+             if (player.x - player.size < 0) { player.x = 0 + player.size; }
+             if (player.y - player.size < 0) { player.y = 0 + player.size; }
+                // player stannar inom skärmen
+
+             if ( keyboard.shift) { player.speed = player.speed + 1} 
+             else { player.speed = 5} 
+             // när shift är nedtryckt ökar hastigheten, annars är den 5 
+             if (keyboard.e) { player.color = mixColor(random(255), random(255), random(255)) }
+                
+
+             if ( player.x + player.size * 2.3 > x) 
+            // text ( 50, 100, 40, "krock") 
+             
+
+             if (player.y - player.size * 2.3 < y) { 
+                
+                text ( 50, 100, 40, "krock") 
+             } 
+
+
+        }
+
+
+
+
+            
+
+        
+        
+        
+        
+        </script>
+</body>
+</html>
+        
+
+
+        
+        
+        
