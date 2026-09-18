@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            position: absolute;
+            z-index: 99;
+        }
+    </style>
+</head>
+<body>
+    <button onClick="myFunction()">Click me</button>
+    
+    <script src="http://koda.nu/simple.js"> 
+
+
+
+
+var color = "red"
+var size = 50
+
+function myFunction() {
+
+  alert("ready for a surprise?");
+  text(500, 500, 100, "Press G!", "black")
+
+}
+
+function update() {    
+
+if(mouse.left) {
+    circle(mouse.x, mouse.y,size,color)  }     
+    
+    if(mouse.right)
+   { circle(mouse.x, mouse.y, size,"white")  }
+if(keyboard.one) { color = "blue"} 
+if(keyboard.two) { color = "green"}
+if(keyboard.three) { color = "red"} 
+if(keyboard.four) { color = "black"} 
+if(keyboard.up) {size++}
+if(keyboard.down) {size--} 
+if(size < 1) {size = 1} 
+if(keyboard.q) { color = mixColor(random(255), random(255), random(255)) 
+// när jag håller ned Q så ändras färgen till en slumpmässig färg 
+   
+}
+    if(keyboard.e) { rectangle(mouse.x, mouse.y, 50, 50, color) } 
+
+else {circle(mouse.x, mouse.y,size,color)  }
+
+
+
+
+
+if(keyboard.five) { clearScreen()}   
+
+
+
+
+
+
+text( 50, 50, 40, "färgen är: ", "black")
+
+circle(400, 35, 20, color) 
+
+
+if(keyboard.g) {
+    // window.location.href = "https://i.pinimg.com/originals/ba/aa/a5/baaaa574ded9e0a53a8f38c0a78eb032.gif"
+    // picture(0, 0, "https://i.pinimg.com/originals/ba/aa/a5/baaaa574ded9e0a53a8f38c0a78eb032.gif", totalWidth, totalHeight)
+    window.open("https://i.pinimg.com/originals/ba/aa/a5/baaaa574ded9e0a53a8f38c0a78eb032.gif", "_blank");
+}
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+</script> 
+    
+</body>
+</html>
