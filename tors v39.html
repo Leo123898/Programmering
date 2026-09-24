@@ -8,8 +8,18 @@
 <body>
     <script src="http://koda.nu/simple.js">       
 
+var speed = prompt("Hur snabb?")
 
-var player = { x: 100, y: 300, size: 20, color: "blue", speed: 4 };
+
+
+
+var player = { x: 100, y: 300, size: 20, color: "red", speed: 4 };
+
+
+
+
+
+
 
 var zombie1 = { x: 300, y: 220 };
 var zombie2 = { x: 500, y: 400 };
@@ -26,7 +36,14 @@ rectangle(x + 3, y - 25, 23, 65, "gray")
 circle(x + 15, y - 40, 20, "lightgreen")
 circle(x, y - 40, 3, "red")
 rectangle(x - 35, y - 20, 30, 14, "lightgreen")
-rectangle(x - 20, y - 20, 30, 14, "gray")
+rectangle(x - 20, y - 20, 30, 14, "gray") }
+
+function drawPlayer(x, y) {
+circle( x - 8, y, 5, "black") 
+circle( x + 8, y, 5, "black")
+
+
+
 
 
 
@@ -48,7 +65,18 @@ function update() {
     drawZombie(zombie3.x, zombie3.y);
     drawZombie(zombie4.x, zombie4.y)
     drawZombie(zombie5.x, zombie5.y)
-  circle(player.x, player.y, player.size, player.color);
+    drawPlayer(player.x, player.y) 
+
+zombie1.x = zombie1.x - speed
+zombie2.x = zombie2.x - speed
+zombie3.x = zombie3.x - speed
+zombie4.x = zombie4.x - speed
+zombie5.x = zombie5.x - speed 
+
+
+circle(player.x, player.y, player.size, player.color);
+  circle(player.x - 8, player.y, player.size - 15, "black");
+circle(player.x + 8, player.y, player.size - 15, "black")
 
   if (keyboard.d) {
     player.x = player.x + player.speed;
@@ -63,25 +91,41 @@ function update() {
     player.y = player.y + player.speed;
   }
 
+  if (distance(player, zombie1) <60) {
+    player.size = player.size + 10 }
+    else{player.size = 20} 
+
+    if(distance(player, zombie1) <60) {
+        zombie1 = "white" 
+    }
+
+
+
+    if(player.size >30) {player.size = 100} 
+
   // STEG 2: träffkollen kommer här
   //i varje distance behöver zombie vara unik
-  if ( distance(player, zombie1) <60) {  
-    text(20, 70, 30, "AJ!", "red")
-  }
+  
+     
+  
 
   if (distance(player, zombie2)  <60) {
     text(20, 70, 30, "AJ!", "red")
+    zombie2 = "white" 
   }
 
  if (distance(player, zombie3)  <60) {
     text(20, 70, 30, "AJ!", "red")
+    zombie3 = "white"
   }
 
  if (distance(player, zombie4)  <60) {
-    text(20, 70, 30, "AJ!", "red") }
-
+    text(20, 70, 30, "AJ!", "red") 
+           zombie4 = "white" 
+ }
 if (distance(player, zombie5)  <60) {  
-    text(20, 70, 30, "AJ!", "red") }
+    text(20, 70, 30, "AJ!", "red") 
+    zombie5 = "white" }
 
 console.log(distance(player, zombie1))
 }
