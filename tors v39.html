@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="http://koda.nu/simple.js">       
+
+
+var player = { x: 100, y: 300, size: 20, color: "blue", speed: 4 };
+
+var zombie1 = { x: 300, y: 220 };
+var zombie2 = { x: 500, y: 400 };
+var zombie3 = { x: 700, y: 260 };
+var zombie4 = { x: 900, y: 400 }; 
+var zombie5 = {x: 1100, y: 220 };
+
+
+
+
+function drawZombie(x, y) {
+rectangle(x + 3, y - 10, 23, 65, "lightgreen")
+rectangle(x + 3, y - 25, 23, 65, "gray")
+circle(x + 15, y - 40, 20, "lightgreen")
+circle(x, y - 40, 3, "red")
+rectangle(x - 35, y - 20, 30, 14, "lightgreen")
+rectangle(x - 20, y - 20, 30, 14, "gray")
+
+
+
+
+}
+
+
+
+
+// STEG 1a: skriv funktionen drawZombie här
+
+function update() {
+  clearScreen();
+  text(20, 30, 24, "Zombiespelet", "black");
+
+  // STEG 1b: rita de tre zombierna här
+    drawZombie(zombie1.x, zombie1.y);
+    drawZombie(zombie2.x, zombie2.y);
+    drawZombie(zombie3.x, zombie3.y);
+    drawZombie(zombie4.x, zombie4.y)
+    drawZombie(zombie5.x, zombie5.y)
+  circle(player.x, player.y, player.size, player.color);
+
+  if (keyboard.d) {
+    player.x = player.x + player.speed;
+  }
+  if (keyboard.a) {
+    player.x = player.x - player.speed;
+  }
+  if (keyboard.w) {
+    player.y = player.y - player.speed;
+  }
+  if (keyboard.s) {
+    player.y = player.y + player.speed;
+  }
+
+  // STEG 2: träffkollen kommer här
+  //i varje distance behöver zombie vara unik
+  if ( distance(player, zombie1) <60) {  
+    text(20, 70, 30, "AJ!", "red")
+  }
+
+  if (distance(player, zombie2)  <60) {
+    text(20, 70, 30, "AJ!", "red")
+  }
+
+ if (distance(player, zombie3)  <60) {
+    text(20, 70, 30, "AJ!", "red")
+  }
+
+ if (distance(player, zombie4)  <60) {
+    text(20, 70, 30, "AJ!", "red") }
+
+if (distance(player, zombie5)  <60) {  
+    text(20, 70, 30, "AJ!", "red") }
+
+console.log(distance(player, zombie1))
+}
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
