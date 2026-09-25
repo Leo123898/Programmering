@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="http://koda.nu/simple.js"> 
+        
+        var player = { x: 100, y: 300, size: 20, color: "blue", speed: 4 };
+
+var zombie1 = { x: 300, y: 220, speed: 3 };
+var zombie2 = { x: 500, y: 400, speed: 3 };
+var zombie3 = { x: 700, y: 260, speed: 3 };
+
+function drawZombie(x, y) {
+  rectangle(x + 3, y - 10, 23, 65, "lightgreen");
+  rectangle(x + 3, y - 25, 23, 65, "gray");
+  circle(x + 15, y - 40, 20, "lightgreen");
+  circle(x, y - 40, 3, "red");
+  rectangle(x - 35, y - 20, 30, 14, "lightgreen");
+  rectangle(x - 20, y - 20, 30, 14, "gray");
+}
+
+function update() {
+  clearScreen();
+  text(20, 30, 24, "Zombiespelet", "black");
+
+  drawZombie(zombie1.x, zombie1.y);
+  drawZombie(zombie2.x, zombie2.y);
+  drawZombie(zombie3.x, zombie3.y);
+
+  circle(player.x, player.y, player.size, player.color);
+
+  if (keyboard.d) {
+    player.x = player.x + player.speed;
+  }
+  if (keyboard.a) {
+    player.x = player.x - player.speed;
+  }
+  if (keyboard.w) {
+    player.y = player.y - player.speed;
+  }
+  if (keyboard.s) {
+    player.y = player.y + player.speed;
+  }
+
+  if (keyboard.right) {
+    zombie1.x = zombie1.x + zombie1.speed;
+  }
+  if (keyboard.left) {
+    zombie1.x = zombie1.x - zombie1.speed;
+  }
+  if (keyboard.up) {
+    zombie1.y = zombie1.y - zombie1.speed;
+  }
+  if (keyboard.down) {
+    zombie1.y = zombie1.y + zombie1.speed;
+  }
+
+    if (zombie1.x < player.x) { zombie1.x = zombie1.x + zombie1.speed }
+    if ( zombie1.x > player.x)  {  zombie1.x = zombie1.x - zombie1.speed  }
+
+
+    if ( zombie1.y < player.y) { zombie1.y = zombie1.y + zombie1.speed  }
+    if ( zombie1.y > player.y) { zombie1.y = zombie1.y - zombie1.speed}
+
+
+     if (zombie2.x < player.x) { zombie2.x = zombie2.x + zombie2.speed }
+      if ( zombie2.x > player.x)  {  zombie2.x = zombie2.x - zombie2.speed  }
+
+
+     if ( zombie2.y < player.y) { zombie2.y = zombie2.y + zombie2.speed  }
+     if ( zombie2.y > player.y) { zombie2.y = zombie2.y - zombie2.speed} 
+
+
+  console.log( "Zombie X: " + zombie1.x)
+  console.log( "Zombie Y: " + zombie1.y)    
+
+  if (distance(player, zombie1) < 65) {
+    text(20, 70, 30, "AJ!", "red");
+  }
+}
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        </script>
+</body>
+</html>

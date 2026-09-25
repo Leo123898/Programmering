@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="http://koda.nu/simple.js">
+        
+        var player = { x: 250, y: 348, size: 22, color: "crimson", speed: 4, vy: 0 };
+var enemy1 = { x: 610, y: 400, speed: 2, color: mixColor(140, 160, 40) };
+var poang = 0;
+
+var ground = 348;     // Marias y när hon står på marken
+var gravity = 0.7;    // hur hårt tyngdkraften drar henne nedåt
+var jumpPower = 14;   // hur kraftigt hon hoppar
+
+var audio = new Audio("https://tprealgy.github.io/resources/oof.mp3")
+
+
+function drawEnemy(x, y, farg) {
+  circle(x, y - 20, 16, farg);
+  rectangle(x - 14, y - 6, 28, 22, farg);
+  circle(x - 6, y - 22, 3, "black");
+  circle(x + 6, y - 22, 3, "black");
+  rectangle(x - 12, y + 16, 10, 6, "black");
+  rectangle(x + 2, y + 16, 10, 6, "black");
+}
+
+function update() {
+  clearScreen();
+  rectangle(0, 420, 800, 80, "green");
+  rectangle(60, 260, 160, 160, "burlywood");
+  triangle(40, 260, 240, 260, 140, 150, "firebrick");
+  rectangle(110, 340, 50, 80, "saddlebrown");
+  circle(180, 300, 20, "skyblue");
+  line(180, 280, 180, 320, "white");
+  line(160, 300, 200, 300, "white");
+  rectangle(680, 300, 14, 120, "sienna");
+  rectangle(760, 300, 14, 120, "sienna");
+  rectangle(680, 290, 94, 14, "sienna");
+  picture(600, 90, "https://tprealgy.github.io/resources/img/sun.png", 32, 32);
+
+  drawEnemy(enemy1.x, enemy1.y, enemy1.color);
+
+  // ---- MARIA RÖR SIG (färdig kod) ----
+  if (keyboard.d) {
+    player.x = player.x + player.speed;
+  }
+  if (keyboard.a) {
+    player.x = player.x - player.speed;
+  }
+  if (player.x < 30) {
+    player.x = 30;
+  }
+  if (player.x > 770) {
+    player.x = 770;
+  }
+
+  // ---- HOPP OCH TYNGDKRAFT (färdig kod: använd den, ändra siffrorna) ----
+  // && betyder "och": hoppet startar bara om mellanslag är nedtryckt OCH Maria står på marken
+  if (keyboard.space && player.y == ground) {
+    player.vy = -jumpPower;
+  }
+  player.vy = player.vy + gravity;
+  player.y = player.y + player.vy;
+  if (player.y > ground) {
+    player.y = ground;
+    player.vy = 0;
+  }
+
+  // ---- STEG 1: fienden jagar Maria längs x (skriv själv) ----
+if( enemy1.x < player.x ) {enemy1.x = enemy1.x + enemy1.speed}
+if( enemy1.x > player.x ) {enemy1.x = enemy1.x - enemy1.speed}
+  poang = poang + 1;
+
+  circle(player.x, player.y, player.size, "peachpuff");
+  circle(player.x, player.y - player.size - 10, 8, "saddlebrown");
+  circle(player.x - 6, player.y - 4, 3, "black");
+  circle(player.x + 6, player.y - 4, 3, "black");
+  triangle(player.x - 20, player.y + player.size + 50, player.x + 20, player.y + player.size + 50, player.x, player.y + player.size, player.color);
+  line(player.x - 18, player.y + player.size + 18, player.x - 32, player.y + player.size + 38, "peachpuff");
+  line(player.x + 18, player.y + player.size + 18, player.x + 32, player.y + player.size + 38, "peachpuff");
+  text(40, 40, 30, "Maria Game", "black");
+  text(40, 75, 20, "Poäng: " + poang, "black");
+  text(686, 272, 14, "Grinden", "black");
+  text(40, 470, 16, "Marias trädgård", "white");
+
+  // ---- STEG 2: träffkoll och GAME OVER (skriv själv) ----
+  if(  distance(player.x, player.y + 20, enemy1.x, enemy1.y) < 50 ) {
+//    text(250, 250, 50, "GAME OVER!", "red" )
+//   stopUdate()
+audio.play()
+
+
+}
+
+
+
+}
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        </script>
+</body>
+</html>
