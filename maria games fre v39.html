@@ -89,12 +89,12 @@ if( enemy1.x > player.x ) {enemy1.x = enemy1.x - enemy1.speed}
 
   // ---- STEG 2: träffkoll och GAME OVER (skriv själv) ----
   if(  distance(player.x, player.y + 20, enemy1.x, enemy1.y) < 50 ) {
-//    text(250, 250, 50, "GAME OVER!", "red" )
-//   stopUdate()
-audio.play()
+   text(250, 250, 50, "GAME OVER!", "red" )
+   stopUpdate()
 
 
-}
+
+}                                           
 
 
 
