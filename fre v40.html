@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+          <script src="http://koda.nu/simple.js"> 
+
+var player = { x: 100, y: 300, size: 20, color: "blue", speed: 4, liv: 3 };
+
+var zombie1 = { x: 300, y: 220, speed: 2 };
+var zombie2 = { x: 500, y: 400, speed: 0 };
+var zombie3 = { x: 700, y: 260, speed: 0 };
+var poang = 0;
+
+// STEG 1: skriv om drawZombie med translate här
+function drawZombie(x, y) { 
+    save();
+    translate(x, y);
+    if (zombie1.x > player.x) { 
+        scale(1, 1);
+    } else {
+        scale(-1, 1);
+    } 
+    if (poang > 500) {zombie1.speed = 3;} 
+//   rotate(poang, 180); 
+    rectangle(3, -10, 23, 65, "lightgreen");
+    rectangle(3, -25, 23, 65, "gray");
+    circle(15, -40, 20, "lightgreen");
+    circle(0, -40, 3, "red");
+    rectangle(-35, -20, 30, 14, "lightgreen");
+    rectangle(-20, -20, 30, 14, "gray");
+     restore(); 
+} //tar man bort resotre försvinner allt på skärmen
+
+
+
+function update() {
+  clearScreen();
+  text(20, 30, 24, "Zombiespelet", "black");
+
+  drawZombie(zombie1.x, zombie1.y);
+  drawZombie(zombie2.x, zombie2.y);
+  drawZombie(zombie3.x, zombie3.y);
+
+
+
+
+  circle(player.x, player.y, player.size, player.color);
+
+  if (keyboard.d) {
+    player.x = player.x + player.speed;
+  }
+  if (keyboard.a) {
+    player.x = player.x - player.speed;
+  }
+  if (keyboard.w) {
+    player.y = player.y - player.speed;
+  }
+  if (keyboard.s) {
+    player.y = player.y + player.speed;
+  }
+
+  if (zombie1.x < player.x) {
+    zombie1.x = zombie1.x + zombie1.speed;
+  }
+  if (zombie1.x > player.x) {
+    zombie1.x = zombie1.x - zombie1.speed;
+  }
+  if (zombie1.y < player.y) {
+    zombie1.y = zombie1.y + zombie1.speed;
+  }
+  if (zombie1.y > player.y) {
+    zombie1.y = zombie1.y - zombie1.speed;
+  }
+
+
+  if (zombie2.x < player.x) {
+    zombie2.x = zombie2.x + zombie2.speed;
+  }
+  if (zombie2.x > player.x) {
+    zombie2.x = zombie2.x - zombie2.speed;
+  }
+  if (zombie2.y < player.y) {
+    zombie2.y = zombie2.y + zombie2.speed;
+  }
+  if (zombie2.y > player.y) {
+    zombie2.y = zombie2.y - zombie2.speed;
+  }
+
+  if (zombie3.x < player.x) {
+    zombie3.x = zombie3.x + zombie3.speed;
+  }
+  if (zombie3.x > player.x) {
+    zombie3.x = zombie3.x - zombie3.speed;
+  }
+  if (zombie3.y < player.y) {
+    zombie3.y = zombie3.y + zombie3.speed;
+  }
+  if (zombie3.y > player.y) {
+    zombie3.y = zombie3.y - zombie3.speed;
+  }
+if (distance(player, zombie3) < 60) {
+    text(280, 250, 50, "GAME OVER", "red");  
+    stopUpdate(); } 
+
+    
+
+ if (distance(player, zombie2) < 60) {
+    text(280, 250, 50, "GAME OVER", "red");  
+    stopUpdate(); } 
+
+    if (poang > 500) {zombie2.speed = 3;}
+    if (poang > 700) {zombie3.speed = 3;}
+
+  if (distance(player, zombie1) < 60) {
+    text(280, 250, 50, "GAME OVER", "red");  
+    stopUpdate();
+  } else {
+    poang = poang + 1;
+    text(20, 70, 24, "Poäng: " + poang, "black");
+  }
+ if (poang > 999) { text(280, 250, 50, "DU VANN!", "green"); // när poängen är större än 999, skriv ut "DU VANN!" och stoppa spelet 
+    stopUpdate(); } 
+
+text(300, 50, 24, "Liv: " + player.liv, "green"); 
+ 
+ 
+}
+
+
+
+
+
+          </script>
+</body>
+</html>
