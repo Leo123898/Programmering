@@ -104,19 +104,39 @@ function update() {
   }
 if (distance(player, zombie3) < 60) {
     text(280, 250, 50, "GAME OVER", "red");  
+    player.liv = player.liv - 1; 
+  //  zombie1.x = random (totalWidth);
+  //  zombie1.y = random (totalHeight); 
+  //    if( distance(player, zombie1) < 60) { 
+  //     zombie1.x = random (totalWidth);
+  //     zombie1.y = random (totalHeight); 
     stopUpdate(); } 
 
     
 
  if (distance(player, zombie2) < 60) {
     text(280, 250, 50, "GAME OVER", "red");  
+    player.liv = player.liv - 1; 
+  //  zombie1.x = random (totalWidth);
+  //  zombie1.y = random (totalHeight); 
+  //    if( distance(player, zombie1) < 60) { 
+  //     zombie1.x = random (totalWidth);
+  //     zombie1.y = random (totalHeight); 
     stopUpdate(); } 
 
     if (poang > 500) {zombie2.speed = 3;}
-    if (poang > 700) {zombie3.speed = 3;}
+    if (poang > 700) {zombie3.speed = 3;} 
 
   if (distance(player, zombie1) < 60) {
     text(280, 250, 50, "GAME OVER", "red");  
+
+    player.liv = player.liv - 1; 
+  //  zombie1.x = random (totalWidth);
+  //  zombie1.y = random (totalHeight); 
+  //    if( distance(player, zombie1) < 60) { 
+  //     zombie1.x = random (totalWidth);
+  //     zombie1.y = random (totalHeight); 
+
     stopUpdate();
   } else {
     poang = poang + 1;
