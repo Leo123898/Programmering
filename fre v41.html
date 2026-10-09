@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body> <script src="http://koda.nu/simple.js"> 
+        var a = prompt("Hur många?") 
+
+var player = { x: 100, y: 300, size: 20, color: "blue", speed: 4 };
+
+var zombie1 = { x: 300, y: 220, speed: 2 };
+var zombie2 = { x: 500, y: 400, speed: 3 };
+var zombie3 = { x: 700, y: 260 };
+var poang = 0;
+
+function drawZombie(x, y) {
+  save();
+  translate(x, y);
+  rectangle(3, -10, 23, 65, "lightgreen");
+  rectangle(3, -25, 23, 65, "gray");
+  circle(15, -40, 20, "lightgreen");
+  circle(0, -40, 3, "red");
+  rectangle(-35, -20, 30, 14, "lightgreen");
+  rectangle(-20, -20, 30, 14, "gray");
+  restore();
+}
+
+function update() {
+  clearScreen();
+  text(20, 30, 24, "Zombiespelet", "black");
+
+  drawZombie(zombie1.x, zombie1.y);
+  drawZombie(zombie2.x, zombie2.y);
+  drawZombie(zombie3.x, zombie3.y);
+
+  circle(player.x, player.y, player.size, player.color);
+
+  if (keyboard.d) {
+    player.x = player.x + player.speed;
+  }
+  if (keyboard.a) {
+    player.x = player.x - player.speed;
+  }
+  if (keyboard.w) {
+    player.y = player.y - player.speed;
+  }
+  if (keyboard.s) {
+    player.y = player.y + player.speed;
+  }
+
+  if (zombie1.x < player.x) {
+    zombie1.x = zombie1.x + zombie1.speed;
+  }
+  if (zombie1.x > player.x) {
+    zombie1.x = zombie1.x - zombie1.speed;
+  }
+  if (zombie1.y < player.y) {
+    zombie1.y = zombie1.y + zombie1.speed;
+  }
+  if (zombie1.y > player.y) {
+    zombie1.y = zombie1.y - zombie1.speed;
+  }
+
+  if (distance(player, zombie1) < 65) {
+    text(280, 250, 50, "GAME OVER", "red");
+    stopUpdate();
+  } else {
+    poang = poang + 1;
+    text(20, 70, 24, "Poäng: " + poang, "black");
+  }
+
+  if (zombie2.x < player.x) {
+    zombie2.x = zombie2.x + zombie2.speed;
+  }
+  if (zombie2.x > player.x) {
+    zombie2.x = zombie2.x - zombie2.speed;
+  }
+  if (zombie2.y < player.y) {
+    zombie2.y = zombie2.y + zombie2.speed;
+  }
+  if (zombie2.y > player.y) {
+    zombie2.y = zombie2.y - zombie2.speed;
+  }
+
+  if (distance(player, zombie2) < 65) {
+    text(280, 250, 50, "GAME OVER", "red");
+    stopUpdate();
+  } else {
+    poang = poang + 1;
+  }
+
+  // STEG: vågen kommer här
+  var i = 0
+  while (i < a) {           // 8 zombies i vågen istället för 4 
+    var vagX = 100 + i * (totalWidth - 200) / (a - 1); 
+    drawZombie(vagX, 550 + random(-10, 10) * i) 
+    if (distance(player.x, player.y, vagX, 550) <60) {
+        text(280, 250, 50, "GAME OVER", "red");
+        stopUpdate();
+    }
+    i += 1; 
+  }
+var j = 0 
+while (j < a) { 
+    var vagY = 100 + j * (totalHeight - 200) / (a - 1);
+    drawZombie(vagY, 50 + random(-10, 10) * j)
+    if (distance(player.x, player.y, 100, vagY) <60) {
+        text(280, 250, 50, "GAME OVER", "red");
+        stopUpdate();
+    }
+    j += 1;
+}
+
+
+
+
+
+}
+
+
+
+
+</script> 
+
+     
+    
+</body>
+</html>
