@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body> <script src="http://koda.nu/simple.js"> 
+
+var player = { x: 100, y: 300, size: 20, color: "blue", speed: 4 };
+
+var zombie1 = { x: 300, y: 220, speed: 2 };
+var zombie2 = { x: 500, y: 400, speed: 3 };
+var zombie3 = { x: 700, y: 260 };
+var poang = 0;
+
+
+var enemies = [ 
+    {x: random(400,totalWidth), y: random(0, totalHeight)},
+    {x: random(400,totalWidth), y: random(0, totalHeight)},
+    {x: random(400,totalWidth), y: random(0, totalHeight)},
+    {x: random(400,totalWidth), y: random(0, totalHeight)},   
+    {x: random(400,totalWidth), y: random(0, totalHeight)}
+]
+
+var stars = []
+
+for(var i = 0; i < 5; i++)  {
+    stars.push({ 
+        x: random(0, totalWidth), 
+        y: random(0, totalHeight), 
+        size: 10,
+        color: "gold"
+    }); 
+}
+
+
+function star( x, y, size, color) {
+    circle(x, y, size, color); }
+
+function drawZombie(x, y) {
+  save();
+  translate(x, y);
+  rectangle(3, -10, 23, 65, "lightgreen");
+  rectangle(3, -25, 23, 65, "gray");
+  circle(15, -40, 20, "lightgreen");
+  circle(0, -40, 3, "red");
+  rectangle(-35, -20, 30, 14, "lightgreen");
+  rectangle(-20, -20, 30, 14, "gray");
+  restore();
+}
+
+function update() {
+  clearScreen();
+  text(20, 30, 24, "Zombiespelet", "black");
+
+  drawZombie(zombie1.x, zombie1.y);
+  drawZombie(zombie2.x, zombie2.y);
+  drawZombie(zombie3.x, zombie3.y);
+
+  circle(player.x, player.y, player.size, player.color);
+
+  if (keyboard.d) {
+    player.x = player.x + player.speed;
+  }
+  if (keyboard.a) {
+    player.x = player.x - player.speed;
+  }
+  if (keyboard.w) {
+    player.y = player.y - player.speed;
+  }
+  if (keyboard.s) {
+    player.y = player.y + player.speed;
+  }
+
+  if (zombie1.x < player.x) {
+    zombie1.x = zombie1.x + zombie1.speed;
+  }
+  if (zombie1.x > player.x) {
+    zombie1.x = zombie1.x - zombie1.speed;
+  }
+  if (zombie1.y < player.y) {
+    zombie1.y = zombie1.y + zombie1.speed;
+  }
+  if (zombie1.y > player.y) {
+    zombie1.y = zombie1.y - zombie1.speed;
+  }
+
+  if (distance(player, zombie1) < 60) {
+    text(280, 250, 50, "GAME OVER", "red");
+    stopUpdate();
+  } else {
+    poang = poang + 1;
+    text(20, 70, 24, "Poäng: " + poang, "black");
+  }
+
+  if (zombie2.x < player.x) {
+    zombie2.x = zombie2.x + zombie2.speed;
+  }
+  if (zombie2.x > player.x) {
+    zombie2.x = zombie2.x - zombie2.speed;
+  }
+  if (zombie2.y < player.y) {
+    zombie2.y = zombie2.y + zombie2.speed;
+  }
+  if (zombie2.y > player.y) {
+    zombie2.y = zombie2.y - zombie2.speed;
+  }
+
+  if (distance(player, zombie2) < 60) {
+    text(280, 250, 50, "GAME OVER", "red");
+    stopUpdate();
+  } else {
+    poang = poang + 1;
+  }
+
+for (var i = 0; i < enemies.length; i++) {
+    drawZombie(enemies[i].x, enemies[i].y);
+    if (distance(player.x, player.y, enemies[i].x, enemies[i].y) < 60) {
+        text(280, 250, 50, "GAME OVER", "red");
+        stopUpdate();
+    
+    }
+}
+if(keyboard.space) {
+    enemies.push({x: random(400,totalWidth), y: random(0, totalHeight)}
+    );
+}
+
+
+for( var i = 0; i < stars.length; i++) {
+    star(stars[i].x, stars[i].y, stars[i].size, stars[i].color); 
+    if (distance(player.x, player.y, stars[i].x, stars[i].y) < 30) {
+        stars.splice(i, 1);
+        poang = poang + 10;
+    }
+} 
+    
+
+
+}
+
+
+
+</script>
+    
+</body>
+</html>
