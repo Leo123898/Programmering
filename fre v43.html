@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body> <script src="https://koda.nu/simple.js">
+
+
+
+
+var player = {
+    x: 300,
+    y: 400,
+    size: 25,
+    color: "red",
+    speed: 4
+};
+
+var enemy = {
+    x: 200,
+    y: 200,
+    size: 25,
+    speed: 2 
+
+};
+
+var poang = 0
+
+
+
+var coins = [
+    {x: 150, y: 100, size: 8},
+    {x: 400, y: 200, size: 8},
+    {x: 500, y: 350, size: 8},
+    {x: 100, y: 300, size: 8},
+    {x: 350, y: 150, size: 8}
+];
+
+function update() {
+
+   
+   fill("Black"); 
+
+    circle(enemy.x, enemy.y, enemy.size, "white");
+    rectangle(enemy.x - 25, enemy.y, 50, 25, "white");
+    circle(enemy.x - 10, enemy.y - 5, 5, "black");
+    circle(enemy.x + 10, enemy.y - 5, 5, "black");
+    circle(enemy.x, enemy.y + 10, 4, "black");
+
+   
+    circle(player.x, player.y, player.size, player.color);
+
+
+
+
+for (var i = 0; i < coins.length; i++) {
+
+  
+    circle(coins[i].x, coins[i].y, coins[i].size, "orange");
+
+    
+    if (distance(player, coins[i]) < 30) {
+        poang = poang + 1;
+
+        
+        coins[i].x = random(20, totalWidth - 20);
+        coins[i].y = random(20, totalHeight - 20);
+    }
+}
+ 
+// if (distance(player, coin2) < 30) {
+//     poang = poang + 1;
+//     coin2.x = random(20, totalWidth - 20);
+//     coin2.y = random(20, totalHeight - 20);
+// }
+
+// if (distance(player, coin3) < 30) {
+//     poang = poang + 1;
+//     coin3.x = random(20, totalWidth - 20);
+//     coin3.y = random(20, totalHeight - 20);
+// }
+
+// if (distance(player, coin4) < 30) {
+//     poang = poang + 1;
+//     coin4.x = random(20, totalWidth - 20);
+//     coin4.y = random(20, totalHeight - 20);
+// }
+
+// if (distance(player, coin5) < 30) {
+//     poang = poang + 1;
+//     coin5.x = random(20, totalWidth - 20);
+//     coin5.y = random(20, totalHeight - 20);
+// }
+
+// if (distance(player, coin6) < 30) {
+//     poang = poang + 1;
+//     coin6.x = random(20, totalWidth - 20);
+//     coin6.y = random(20, totalHeight - 20);
+
+
+if (enemy.x < player.x) {
+    enemy.x = enemy.x + enemy.speed;
+}
+if (enemy.x > player.x) {
+    enemy.x = enemy.x - enemy.speed;
+}
+if (enemy.y < player.y) {
+    enemy.y = enemy.y + enemy.speed;
+}
+if (enemy.y > player.y) {
+    enemy.y = enemy.y - enemy.speed;
+}
+
+
+
+ if (keyboard.d) {
+    player.x = player.x + player.speed;
+  }
+  if (keyboard.a) {
+    player.x = player.x - player.speed;
+  }
+  if (keyboard.w) {
+    player.y = player.y - player.speed;
+  }
+  if (keyboard.s) {
+    player.y = player.y + player.speed;
+ }
+
+ if (distance(player, enemy) < 40) {
+    picture(0, 0, "https://play-lh.googleusercontent.com/YMJtb6ekdnpmVY8PV3D5mOs8sHHZA4jc3Yao4R-_nAhBJ8leZ3zClgWJp1G8Rt37klUyqadY3W6nHYaLfG_3OA", totalWidth, totalHeight)
+    stopUpdate()
+}
+
+
+
+
+
+if( poang >= 15) { 
+     text(500, 300, 100, "Du vann!", "Green"); 
+ stopUpdate(); 
+}
+
+
+
+text(20, 30, 25, "Poäng: " + poang, "white"); 
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+    
+
+
+
+
+
+
+
+    
+</body>
+</html>
