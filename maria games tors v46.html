@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body> <script src="https://koda.nu/simple.js">
+
+var player = {
+  x: 250, y: 340, size: 22, color: "crimson", speed: 5
+};
+var enemy = { x: 480, y: 400, color: mixColor(140, 160, 40) };
+var poang = 0;
+
+function update() {
+  clearScreen();
+  rectangle(0, 420, 800, 80, "green");
+  rectangle(60, 260, 160, 160, "burlywood");
+  triangle(40, 260, 240, 260, 140, 150, "firebrick");
+  rectangle(110, 340, 50, 80, "saddlebrown");
+  circle(180, 300, 20, "skyblue");
+  line(180, 280, 180, 320, "white");
+  line(160, 300, 200, 300, "white");
+  rectangle(680, 300, 14, 120, "sienna");
+  rectangle(760, 300, 14, 120, "sienna");
+  rectangle(680, 290, 94, 14,  "sienna");
+  picture(600, 90, "https://tprealgy.github.io/resources/img/sun.png", 32, 32);
+  circle(enemy.x, enemy.y - 20, 16, enemy.color);
+  rectangle(enemy.x - 14, enemy.y - 6, 28, 22, enemy.color);
+  circle(enemy.x - 6, enemy.y - 22, 3, "black");
+  circle(enemy.x + 6, enemy.y - 22, 3, "black");
+  rectangle(enemy.x - 12, enemy.y + 16, 10, 6, "black");
+  rectangle(enemy.x + 2, enemy.y + 16, 10, 6, "black");
+  circle(player.x, player.y, player.size, "peachpuff");
+  circle(player.x, player.y - player.size - 10, 8, "saddlebrown");
+  circle(player.x - 6, player.y - 4, 3, "black");
+  circle(player.x + 6, player.y - 4, 3, "black");
+  triangle(player.x - 20, player.y + player.size + 50, player.x + 20, player.y + player.size + 50, player.x, player.y + player.size, player.color);
+  line(player.x - 18, player.y + player.size + 18, player.x - 32, player.y + player.size + 38, "peachpuff");
+  line(player.x + 18, player.y + player.size + 18, player.x + 32, player.y + player.size + 38, "peachpuff");
+
+  text(40, 40, 30, "Maria Game", "black");
+  text(40, 75, 20, "Poäng: " + poang, "DarkBlack");
+  text(686, 272, 14, "Grinden", "black");
+  text(40, 470, 16, "Marias trädgård", "white");
+
+//  player.x = mouse.x;
+//    player.y = mouse.y;
+
+  if(keyboard.w) { player.y = player.y - player.speed} else{player.x = mouse.x, player.y = mouse.y}
+  if(keyboard.s) {player.y = player.y + player.speed} else{player.x = mouse.x, player.y = mouse.y}
+  if(keyboard.d) {player.x = player.x + player.speed}
+  if(keyboard.a) {player.x = player.x - player.speed}  
+
+
+  // ---- LÄGG TILL TANGENTBORDSSTYRNING SOM ALTERNATIV TILL MUSEN HÄR ----
+}
+
+
+
+
+</script>
+    
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body> <script src="https://koda.nu/simple.js"> 
+
+
+var player = { x: 400, y: 500, size: 100, color: "blue", }
+
+
+var colors = [ "blue", "red", "green", "black", "orange" ] 
+
+
+
+function Color() {
+circle(player.x, player.y, player.size, player.color)
+
+
+}
+
+
+
+
+
+
+
+
+function update() {
+
+ circle(player.x, player.y, player.size, player.color)
+
+if(keyboard.two) {player.color = colors[1]}
+    if(keyboard.three) {player.color = colors[2]}
+    if(keyboard.four) {player.color = colors[3]}
+    if(keyboard.five) {player.color = colors[4]}
+if (keyboard.one) {player.color = colors[0]}
+
+
+
+
+for (var i = 0; i < 5; i++) { 
+    Color() 
+}
+
+
+
+
+
+ }
+
+
+
+
+ 
+
+
+</script>
+    
+</body>
+</html>
