@@ -1,0 +1,28 @@
+// ===== MIN PROJEKTPLAN =====
+// Spelidé: (skriv en kort beskrivning, 2-4 meningar)
+Min ide är ett spel med olika nivåer med spelare och enemys. Det kommer vara jul tema, man ska samla upp presenter för att kommer till nästa nivå medan snö gubbar försöker stoppa dig. Varje present ger dig ett skott som du kan sjuta och om du träffar en snö gubbe fryser den i 3 seconder.
+
+// --- SAKER JAG VILL ÖVA PÅ (utifrån tidigare feedback) ---
+// (Vad har du fått feedback om tidigare som du vill bli bättre på,
+//  eller något du aldrig hann klart med? Skriv in det här och se till
+//  att du övar på det i ditt spel under projektet.)
+// 1.  Jag behöver öva mer på loopar och funktioner. 
+
+// --- MITT KRAV (måste finnas) ---
+// Antal spelare: 1 
+// Antal fiender/hinder: börjar med 1 och ökar efter varje nivå
+// Mål (hur vinner/klarar man spelet?): när man har tagit ett viss antal paket (det ändras för varje nivå)
+// Förlustvillkor (hur förlorar man?): Om snö gubben nuddar dig. 
+
+// --- MIN REKOMMENDATION (bör finnas) --- 
+// 1. en spelare, enemys, olika nivåer, presenter.  
+// 2.Skott och vapen.
+
+// --- MIN UTMANING (kan finnas, om tid finns) ---
+// 1.En start meny
+// 2. olika typer av enemies. 
+
+// --- FÖRBÄTTRINGAR ATT GÖRA SEN ---
+// (Lägg till fler idéer här under hela projektet.
+//  Känner du dig klar med allt ovan? Kolla den här listan och börja på nästa.)
+//
