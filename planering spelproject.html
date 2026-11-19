@@ -30,16 +30,16 @@
 
 
 // Psuedokod  
-När spelet uppdateras: 
-loopar enemy, gifts på olika ställen.
-flytta spelaren med WSAD.
-låt spelaren samla gifts och undvika enemy.  
+//När spelet uppdateras: 
+//loopar enemy, gifts på olika ställen.
+//flytta spelaren med WSAD.
+//låt spelaren samla gifts och undvika enemy.  
 
 // Psuedokod 
-Håll spelaren inom spel plannen
-om spelare tar upp gift + 1 poäng
-om spelare tar upp gift 25% att du får skott. 
-enemy nuddar player= gameover
+//Håll spelaren inom spel plannen
+//om spelare tar upp gift + 1 poäng
+//om spelare tar upp gift 25% att du får skott. 
+//enemy nuddar player= gameover
 
 
 
@@ -54,8 +54,46 @@ enemy nuddar player= gameover
 <body> <script src="https://koda.nu/simple.js"> 
 
 
+var enemies = [{x: 100, y:100, speed: 5},
+             {x: 100, y: 250, speed: 5},
+             {x: 100, y: 400, speed: 5  },
+             {x: 100, y: 550, speed: 5},
+             {x: 100, y: 700, speed: 5}
+]
+
+function drawEnemy(x, y) {
+save()
+translate(x, y)
+circle(10, 10, 20, "white"); 
+circle(10, -25, 16, "white");
+circle(5, -28, 3, "black");
+circle(15, -28, 3, "black");
+circle(10, -22, 3, "orange");
+circle(4, -17, 2, "black") 
+circle(17, -17, 2, "black")
+circle(11, -14, 2, "black")
+circle(14, -15, 2, "black")
+circle(7, -15, 2, "black")
+rectangle(-2, -40, 25, 5, "black")
+rectangle(1, -57, 20, 18, "black")
+restore()
+}
 
 
+
+
+
+function update() {
+    fill("grey")
+
+
+
+
+
+
+
+
+}
 
 
 
