@@ -1,3 +1,16 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body> <script src="https://koda.nu/simple.js"> 
+
 // ===== MIN PROJEKTPLAN =====
 // Spelidé: (skriv en kort beskrivning, 2-4 meningar)
 //Min ide är ett spel med olika nivåer med spelare och enemys. Det kommer vara jul tema, man ska samla upp presenter för att kommer till nästa nivå medan snö gubbar försöker stoppa dig. Varje present ger dig ett skott som du kan sjuta och om du träffar en snö gubbe fryser den i 3 seconder.
@@ -42,24 +55,32 @@
 //enemy nuddar player= gameover
 
 
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body> <script src="https://koda.nu/simple.js"> 
-
-
-var enemies = [{x: 100, y:100, speed: 5},
-             {x: 100, y: 250, speed: 5},
-             {x: 100, y: 400, speed: 5  },
-             {x: 100, y: 550, speed: 5},
+var enemies = [{x: 100, y:150, speed: 2},
+             {x: 100, y: 250, speed: 3},
+             {x: 100, y: 400, speed: 4  },
+             {x: 100, y: 550, speed: 4.5},
              {x: 100, y: 700, speed: 5}
 ]
+
+var gifts = [ {x: 500, y: 100, },
+                { x: 700, y: 250}, 
+                { x: 900, y: 400}, 
+                { x: 1100, y: 550}, 
+                { x: 1300, y: 700}, ]
+
+
+
+
+
+
+var player = { x: 500, y: 400, size: 20, color: "blue", speed: 5
+}
+
+
+
+var level = 1
+var poang = 0
+
 
 function drawEnemy(x, y) {
 save()
@@ -79,12 +100,82 @@ rectangle(1, -57, 20, 18, "black")
 restore()
 }
 
-
+function drawGift(x, y) {
+save()
+translate(x, y)
+circle (30, 30, 20, 20, "red")
+rectangle(10, 10, 40, 40, "red"); 
+    rectangle(10, 26, 40, 7, "yellow");
+    rectangle(27, 10, 7, 40, "yellow");
+    circle(30.8, 7, 6, "yellow");
+    restore()
+}
 
 
 
 function update() {
     fill("grey")
+
+
+
+circle(player.x, player.y, player.size, player.color, player.speed)
+
+
+
+    var i = 0;
+while(i < level) {
+
+    drawEnemy(enemies[i].x, enemies[i].y);
+
+    if (enemies[i].x < player.x) {
+    enemies[i].x = enemies[i].x + enemies[i].speed;
+}
+if (enemies[i].x > player.x) {
+    enemies[i].x = enemies[i].x - enemies[i].speed;
+}
+if (enemies[i].y < player.y) {
+    enemies[i].y = enemies[i].y + enemies[i].speed;
+}
+if (enemies[i].y > player.y) {
+    enemies[i].y = enemies[i].y - enemies[i].speed;
+}
+
+    i++;
+}
+   
+
+for (var j = 0; j < gifts.length; j++) {
+    drawGift(gifts[j].x, gifts[j].y )
+if (distance(player.x, player.y, gifts[j].x + 30, gifts[j].y + 30) < 30) {
+    poang = poang + 1
+        gifts[j].x = random(20, totalWidth - 20);
+        gifts[j].y = random(20, totalHeight - 20); }
+
+}
+
+
+
+
+if(keyboard.d) {
+   player.x = player.x + player.speed;
+}
+if(keyboard.a) {
+    player.x = player.x - player.speed; 
+}
+if(keyboard.w) {
+    player.y = player.y - player.speed; 
+}
+if(keyboard.s) {
+    player.y = player.y + player.speed; 
+}
+
+text(20, 40, 30, "Poäng: " + poang, "black");
+
+
+
+
+
+
 
 
 
