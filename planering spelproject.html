@@ -83,6 +83,9 @@ var poang = 0
 
 var giftsneeded = 10 
 
+var lämnaGifts = 0 
+
+
 function drawEnemy(x, y) {
 save()
 translate(x, y)
@@ -117,8 +120,6 @@ rectangle(10, 10, 40, 40, "red");
 function update() {
     fill("grey")
 
-rectangle(door.x, door.y, 60, 80, "brown");
-text(door.x, door.y - 10, 20, "DOOR", "white");
 
 circle(player.x, player.y, player.size, player.color, player.speed)
 
@@ -158,10 +159,6 @@ if (distance(player.x, player.y, gifts[j].x + 30, gifts[j].y + 30) < 30) {
         gifts[j].y = random(20, totalHeight - 20); }
 
 }
-if(distance(player.x, player.y, door.x + 30, door.y + 40) <50) 
-{ poang = poang + collectedGifts
-    collectedGifts = 0
-}
 
 
 
@@ -181,6 +178,8 @@ if(keyboard.s) {
 text(20, 40, 30, "Poäng: " + poang, "black");
 
 text(20, 80, 30, "Gifts:" + collectedGifts, "Black" )
+
+text(20, 120, 30, "Level: " + level, "black");
 
 
 
