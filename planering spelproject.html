@@ -69,18 +69,19 @@ var gifts = [ {x: 500, y: 100, },
                 { x: 1300, y: 700}, ]
 
 
-
+var door = {x: 1500, y: 500}
 
 
 
 var player = { x: 500, y: 400, size: 20, color: "blue", speed: 5
 }
 
-
+var collectedGifts = 0 
 
 var level = 1
 var poang = 0
 
+var giftsneeded = 10 
 
 function drawEnemy(x, y) {
 save()
@@ -116,7 +117,8 @@ rectangle(10, 10, 40, 40, "red");
 function update() {
     fill("grey")
 
-
+rectangle(door.x, door.y, 60, 80, "brown");
+text(door.x, door.y - 10, 20, "DOOR", "white");
 
 circle(player.x, player.y, player.size, player.color, player.speed)
 
@@ -139,7 +141,10 @@ if (enemies[i].y < player.y) {
 if (enemies[i].y > player.y) {
     enemies[i].y = enemies[i].y - enemies[i].speed;
 }
-
+if (distance(player.x, player.y, enemies[i].x + 10, enemies[i].y + 10) < 30) {
+    text(300, 300, 50, "GAME OVER", "red");
+    stopUpdate();
+}
     i++;
 }
    
@@ -147,12 +152,16 @@ if (enemies[i].y > player.y) {
 for (var j = 0; j < gifts.length; j++) {
     drawGift(gifts[j].x, gifts[j].y )
 if (distance(player.x, player.y, gifts[j].x + 30, gifts[j].y + 30) < 30) {
-    poang = poang + 1
+    collectedGifts = collectedGifts + 1
+
         gifts[j].x = random(20, totalWidth - 20);
         gifts[j].y = random(20, totalHeight - 20); }
 
 }
-
+if(distance(player.x, player.y, door.x + 30, door.y + 40) <50) 
+{ poang = poang + collectedGifts
+    collectedGifts = 0
+}
 
 
 
@@ -171,6 +180,7 @@ if(keyboard.s) {
 
 text(20, 40, 30, "Poäng: " + poang, "black");
 
+text(20, 80, 30, "Gifts:" + collectedGifts, "Black" )
 
 
 
