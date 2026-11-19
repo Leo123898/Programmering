@@ -69,7 +69,7 @@ var gifts = [ {x: 500, y: 100, },
                 { x: 1300, y: 700}, ]
 
 
-var door = {x: 1500, y: 500}
+var door = {x: 1500, y: 500, color: "Brown"}
 
 
 
@@ -120,6 +120,9 @@ rectangle(10, 10, 40, 40, "red");
 function update() {
     fill("grey")
 
+rectangle(door.x, door.y, 60, 80, door.color)
+    text(1497, 499, 20, "DOOR", "black")
+
 
 circle(player.x, player.y, player.size, player.color, player.speed)
 
@@ -158,6 +161,13 @@ if (distance(player.x, player.y, gifts[j].x + 30, gifts[j].y + 30) < 30) {
         gifts[j].x = random(20, totalWidth - 20);
         gifts[j].y = random(20, totalHeight - 20); }
 
+}
+if (distance(player.x, player.y, door.x, door.y + 40) < 70) {lämnaGifts = lämnaGifts + collectedGifts
+    poang = poang + collectedGifts
+    collectedGifts = 0
+}
+if (lämnaGifts >= giftsneeded) {
+    door.color = "green"
 }
 
 
