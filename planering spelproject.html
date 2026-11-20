@@ -170,6 +170,15 @@ if (lämnaGifts >= giftsneeded) {
     door.color = "green"
 }
 
+if(door.color == "green" && distance(player.x, player.y, door.x + 30, door.y + 40) <50) {
+     level = level + 1
+     giftsneeded = giftsneeded + 5
+     lämnaGifts = 0
+     door.color = "brown"
+     player.x = 500
+     player.y = 400
+
+}
 
 
 if(keyboard.d) {
@@ -193,7 +202,7 @@ text(20, 120, 30, "Level: " + level, "black");
 
 text(1490, 470, 25, lämnaGifts +"/" + giftsneeded, "black") 
 
-
+text(1478, 600, 15, "LÄMNA HÄR!", "black")
 
 
 
