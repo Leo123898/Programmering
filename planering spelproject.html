@@ -122,7 +122,7 @@ function update() {
 
 rectangle(door.x, door.y, 60, 80, door.color)
     text(1497, 499, 20, "DOOR", "black")
-
+    if(lämnaGifts >= giftsneeded) {text(1510, 545, 12, "OPEN", "black")} else{text(1500, 545, 12, "LOCKED", "black")}  
 
 circle(player.x, player.y, player.size, player.color, player.speed)
 
@@ -191,7 +191,7 @@ text(20, 80, 30, "Gifts:" + collectedGifts, "Black" )
 
 text(20, 120, 30, "Level: " + level, "black");
 
-
+text(1490, 470, 25, lämnaGifts +"/" + giftsneeded, "black") 
 
 
 
