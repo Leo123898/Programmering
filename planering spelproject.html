@@ -115,6 +115,14 @@ rectangle(10, 10, 40, 40, "red");
     restore()
 }
 
+function drawPlayer() {
+
+
+
+
+
+    
+}
 
 
 function update() {
@@ -125,7 +133,7 @@ rectangle(door.x, door.y, 60, 80, door.color)
     text(1497, 499, 20, "DOOR", "black")
     if(lämnaGifts >= giftsneeded) {text(1510, 545, 12, "OPEN", "black")} else{text(1500, 545, 12, "LOCKED", "black")}  // om paketen du har lämnat är samma eller större än paket man behöver står det Open på dörren annars står det locked. 
 
-circle(player.x, player.y, player.size, player.color, player.speed)
+// circle(player.x, player.y, player.size, player.color, player.speed)
 
 
 
@@ -171,7 +179,7 @@ if (lämnaGifts >= giftsneeded) {   // när du har samma eller mer gifts lämnat
     door.color = "green"
 }
 
-if(door.color == "green" && distance(player.x, player.y, door.x + 30, door.y + 40) <50) { // om dörren är grön och spelaren går nära på dörren, level höjs med 1 + gifts needed för näsat nivå höjs med 2, gifts lämnade blir 0, dörren blir brun och spelaren går tillbaka till start position 
+if(door.color == "green" && distance(player.x, player.y, door.x + 10, door.y + 40) <50) { // om dörren är grön och spelaren går nära på dörren, level höjs med 1 + gifts needed för näsat nivå höjs med 2, gifts lämnade blir 0, dörren blir brun och spelaren går tillbaka till start position 
      level = level + 1
      giftsneeded = giftsneeded + 2
      lämnaGifts = 0
