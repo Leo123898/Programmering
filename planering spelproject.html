@@ -2,7 +2,7 @@
 
 
 
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -62,7 +62,7 @@ var enemies = [{x: 100, y:150, speed: 2},
              {x: 100, y: 700, speed: 5}
 ]
 
-var gifts = [ {x: 500, y: 100, },
+var gifts = [ {x: 500, y: 100, },    
                 { x: 700, y: 250}, 
                 { x: 900, y: 400}, 
                 { x: 1100, y: 550}, 
@@ -81,12 +81,12 @@ var collectedGifts = 0
 var level = 1
 var poang = 0
 
-var giftsneeded = 10 
+var giftsneeded = 6
 
 var lämnaGifts = 0 
 
 
-function drawEnemy(x, y) {
+function drawEnemy(x, y) {    // function till enemy
 save()
 translate(x, y)
 circle(10, 10, 20, "white"); 
@@ -104,7 +104,7 @@ rectangle(1, -57, 20, 18, "black")
 restore()
 }
 
-function drawGift(x, y) {
+function drawGift(x, y) {  // function till gifts
 save()
 translate(x, y)
 circle (30, 30, 20, 20, "red")
@@ -118,18 +118,19 @@ rectangle(10, 10, 40, 40, "red");
 
 
 function update() {
-    fill("grey")
-
-rectangle(door.x, door.y, 60, 80, door.color)
+    clearScreen()
+     fill("grey")
+    
+rectangle(door.x, door.y, 60, 80, door.color)     
     text(1497, 499, 20, "DOOR", "black")
-    if(lämnaGifts >= giftsneeded) {text(1510, 545, 12, "OPEN", "black")} else{text(1500, 545, 12, "LOCKED", "black")}  
+    if(lämnaGifts >= giftsneeded) {text(1510, 545, 12, "OPEN", "black")} else{text(1500, 545, 12, "LOCKED", "black")}  // om paketen du har lämnat är samma eller större än paket man behöver står det Open på dörren annars står det locked. 
 
 circle(player.x, player.y, player.size, player.color, player.speed)
 
 
 
     var i = 0;
-while(i < level) {
+while(i < level) { // loop för enemys övr med 1 varje level 
 
     drawEnemy(enemies[i].x, enemies[i].y);
 
@@ -153,26 +154,26 @@ if (distance(player.x, player.y, enemies[i].x + 10, enemies[i].y + 10) < 30) {
 }
    
 
-for (var j = 0; j < gifts.length; j++) {
+for (var j = 0; j < gifts.length; j++) {    // loop för gifts + när man tar upp en kommer den tillbaka på random ställe 
     drawGift(gifts[j].x, gifts[j].y )
 if (distance(player.x, player.y, gifts[j].x + 30, gifts[j].y + 30) < 30) {
-    collectedGifts = collectedGifts + 1
+    collectedGifts = collectedGifts + 1 
 
         gifts[j].x = random(20, totalWidth - 20);
         gifts[j].y = random(20, totalHeight - 20); }
 
 }
-if (distance(player.x, player.y, door.x, door.y + 40) < 70) {lämnaGifts = lämnaGifts + collectedGifts
+if (distance(player.x, player.y, door.x, door.y + 40) < 50) {lämnaGifts = lämnaGifts + collectedGifts // När player går vid dörren lämnar du dina gifts som omvandlars till poäng
     poang = poang + collectedGifts
     collectedGifts = 0
 }
-if (lämnaGifts >= giftsneeded) {
+if (lämnaGifts >= giftsneeded) {   // när du har samma eller mer gifts lämnat vid dörren än vad som kvärs blir dörren grön 
     door.color = "green"
 }
 
-if(door.color == "green" && distance(player.x, player.y, door.x + 30, door.y + 40) <50) {
+if(door.color == "green" && distance(player.x, player.y, door.x + 30, door.y + 40) <50) { // om dörren är grön och spelaren går nära på dörren, level höjs med 1 + gifts needed för näsat nivå höjs med 2, gifts lämnade blir 0, dörren blir brun och spelaren går tillbaka till start position 
      level = level + 1
-     giftsneeded = giftsneeded + 5
+     giftsneeded = giftsneeded + 2
      lämnaGifts = 0
      door.color = "brown"
      player.x = 500
@@ -181,7 +182,7 @@ if(door.color == "green" && distance(player.x, player.y, door.x + 30, door.y + 4
 }
 
 
-if(keyboard.d) {
+if(keyboard.d) {                             // du rör spelaren med wasd tangenterna
    player.x = player.x + player.speed;
 }
 if(keyboard.a) {
@@ -194,15 +195,15 @@ if(keyboard.s) {
     player.y = player.y + player.speed; 
 }
 
-text(20, 40, 30, "Poäng: " + poang, "black");
+text(20, 40, 30, "Point: " + poang, "black");      // står poäng på skärmen och höjs varje gång du får ett poäng 
 
-text(20, 80, 30, "Gifts:" + collectedGifts, "Black" )
+text(20, 80, 30, "Gifts:" + collectedGifts, "Black" ) // står gifts och Höjs varje gång du tar upp en gift
 
 text(20, 120, 30, "Level: " + level, "black");
 
-text(1490, 470, 25, lämnaGifts +"/" + giftsneeded, "black") 
+text(1490, 470, 25, lämnaGifts +"/" + giftsneeded, "black")     // står / och antal gifts lämnade på vänster sidan och hur många du behöver på höger sidan.
 
-text(1478, 600, 15, "LÄMNA HÄR!", "black")
+text(1450, 600, 15, "LEAVE GIFT HERE!", "black")
 
 
 
